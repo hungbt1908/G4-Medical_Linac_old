@@ -3,7 +3,7 @@
 /run/geometryModified
 /run/initialize
 
-# Setups proton beam
+# Setups electron beam
 #
 /LINAC/Beam/SetBeamEnergy         6.0 MeV
 /LINAC/Beam/SetEnergyStd          0.127 MeV
