@@ -3,8 +3,18 @@
 /run/geometryModified
 /run/initialize
 
+# Setups proton beam
 #
-/control/execute GPS.mac
+/LINAC/Beam/SetBeamEnergy         6.0 MeV
+/LINAC/Beam/SetEnergyStd          0.127 MeV
+/LINAC/Beam/SetBeamRadius         1.25 mm
+/LINAC/Beam/SetBeamXPos           0. mm
+/LINAC/Beam/SetBeamYPos           0. mm
+/LINAC/Beam/SetBeamZPos          -0.5 cm
+/LINAC/Beam/SetMinSolidAngle      0. deg
+/LINAC/Beam/SetMaxSolidAngle      0.01 deg
+/LINAC/Beam/SetThetaRotationAngle 0. deg
+/LINAC/Beam/SetPhiRotationAngle   90. deg
 
 # Visualization setting
 /control/execute vis.mac
