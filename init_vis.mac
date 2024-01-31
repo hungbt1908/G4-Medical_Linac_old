@@ -2,6 +2,9 @@
 /LINAC/Geometry/SetPhantomXDim 30. cm
 /LINAC/Geometry/SetPhantomYDim 30. cm
 /LINAC/Geometry/SetPhantomZDim 30. cm
+/LINAC/Geometry/SetNumberOfVoxelsAlongX 30
+/LINAC/Geometry/SetNumberOfVoxelsAlongY 30
+/LINAC/Geometry/SetNumberOfVoxelsAlongZ 30
 
 # Initialize kernel
 #

@@ -95,6 +95,10 @@ public:
     G4int numberOfVoxelsAlongY;
     G4int numberOfVoxelsAlongZ;
 
+    G4Box *RODetectorXDivision, *RODetectorYDivision, *RODetectorZDivision;
+	G4LogicalVolume* RODetectorXDivisionLog, *RODetectorYDivisionLog, *RODetectorZDivisionLog;
+	G4VPhysicalVolume *RODetectorXDivisionPhys, *RODetectorYDivisionPhys, *RODetectorZDivisionPhys;
+
     DetectorMessenger* pDetectorMessenger;
 };
 
