@@ -45,6 +45,14 @@ public:
     void ConstructAcc2();    
     void ConstructWaterPhantom();
     void PrintInformation();
+
+    inline void SetPhantomXDim(G4double val){phantomXDim = val;}
+    inline void SetPhantomYDim(G4double val){phantomYDim = val;}
+    inline void SetPhantomZDim(G4double val){phantomZDim = val;}
+
+    inline void SetNumberOfVoxelsAlongX(G4double val){numberOfVoxelsAlongX = val;}
+    inline void SetNumberOfVoxelsAlongY(G4double val){numberOfVoxelsAlongY = val;}
+    inline void SetNumberOfVoxelsAlongZ(G4double val){numberOfVoxelsAlongZ = val;}
  
 public:
     // attributes
@@ -78,6 +86,14 @@ public:
     G4double jaw2XAperture;
     G4double jaw1YAperture;
     G4double jaw2YAperture;
+
+    G4double phantomXDim;
+    G4double phantomYDim;
+    G4double phantomZDim;
+
+    G4int numberOfVoxelsAlongX;
+    G4int numberOfVoxelsAlongY;
+    G4int numberOfVoxelsAlongZ;
 
     DetectorMessenger* pDetectorMessenger;
 };

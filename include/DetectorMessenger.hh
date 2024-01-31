@@ -24,8 +24,13 @@ public:
 private:
     DetectorConstruction* fDetectorConstruction;
 
-    G4UIdirectory* lgkDir;
-    G4UIcmdWithAnInteger* setHelmetSizeCmd;  
+    G4UIdirectory* linacDir;
+    G4UIcmdWithADoubleAndUnit* setPhantomXDimCmd;
+    G4UIcmdWithADoubleAndUnit* setPhantomYDimCmd;
+    G4UIcmdWithADoubleAndUnit* setPhantomZDimCmd;
+    G4UIcmdWithAnInteger* setNumberOfVoxelsAlongXCmd;
+    G4UIcmdWithAnInteger* setNumberOfVoxelsAlongYCmd;
+    G4UIcmdWithAnInteger* setNumberOfVoxelsAlongZCmd;
 };
 
 

@@ -427,16 +427,18 @@ void DetectorConstruction::ConstructWaterPhantom()
 {
 	G4ThreeVector centre, halfSize;
     G4ThreeVector fPhantomSize;   // Size of Water Phantom
-	halfSize.set(150.*mm,150.*mm,150.*mm);
-	centre.set(0.,0.,115*cm);
-	fPhantomSize.setX(300.*mm);
-  	fPhantomSize.setY(300.*mm);
-  	fPhantomSize.setZ(300.*mm);
+	centre.set(0., 0., 115*cm);
+
+	fPhantomSize.setX(phantomXDim);
+  	fPhantomSize.setY(phantomYDim);
+  	fPhantomSize.setZ(phantomZDim);
+	halfSize.setX(fPhantomSize.getX()/2.);
+	halfSize.setY(fPhantomSize.getY()/2.);
+	halfSize.setZ(fPhantomSize.getZ()/2.);
 
 	G4Box *fullWaterPhantomBox = new G4Box("fullWaterPhantomBox", halfSize.getX(), halfSize.getY(), halfSize.getZ());
  	G4LogicalVolume *fullWaterPhantomLV = new G4LogicalVolume(fullWaterPhantomBox, Water, "fullWaterPhantomLV", 0, 0, 0);
 	new G4PVPlacement(0, centre, "fullWaterPhantomPV", fullWaterPhantomLV, physWorld, false, 0);
-
 }
 
 void DetectorConstruction::PrintInformation()
