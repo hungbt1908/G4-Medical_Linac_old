@@ -1,27 +1,3 @@
-# Setups geometry
-/HUS/Geometry/Target/SetTargetMaterial B10
-/HUS/Geometry/Target/SetBaseMaterial   C3H6O2
-/HUS/Geometry/Target/SetTargetXYDim    1. cm
-/HUS/Geometry/Target/SetTargetZThick   286. nm 
-/HUS/Geometry/Target/SetTargetAngle    90. deg
-/HUS/Geometry/Target/SetBaseXYDim      1. cm
-/HUS/Geometry/Target/SetBaseZThick     36.70 nm
-/HUS/Geometry/Detector/SetDet0Angle    40. deg
-/HUS/Geometry/Detector/SetDet1Angle    70. deg
-/HUS/Geometry/Detector/SetDet2Angle    150. deg
-/HUS/Geometry/Detector/SetDet3Angle    233. deg
-/HUS/Geometry/Detector/SetDet4Angle    270 deg
-/HUS/Geometry/Detector/SetDet5Angle    330. deg
-
-# Set physics
-#
-/HUS/Physics/SetElasticScaleFactor 1000.
-/HUS/Physics/SetInelasticScaleFactor 1000.
-
-# Set file name
-#
-/output/FileName output.root
-
 # Initialize kernel
 #
 /run/geometryModified
@@ -29,15 +5,16 @@
 
 # Setups proton beam
 #
-/HUS/Beam/SetBeamEnergy         2.0 MeV
-/HUS/Beam/SetBeamRadius         0.01 mm
-/HUS/Beam/SetBeamXPos           0. mm
-/HUS/Beam/SetBeamYPos           0. mm
-/HUS/Beam/SetBeamZPos           -1. cm
-/HUS/Beam/SetMinSolidAngle      0. deg
-/HUS/Beam/SetMaxSolidAngle      0.01 deg
-/HUS/Beam/SetThetaRotationAngle 0. deg
-/HUS/Beam/SetPhiRotationAngle   90. deg
+/LINAC/Beam/SetBeamEnergy         6.0 MeV
+/LINAC/Beam/SetEnergyStd          0.127 MeV
+/LINAC/Beam/SetBeamRadius         1.25 mm
+/LINAC/Beam/SetBeamXPos           0. mm
+/LINAC/Beam/SetBeamYPos           0. mm
+/LINAC/Beam/SetBeamZPos          -0.5 cm
+/LINAC/Beam/SetMinSolidAngle      0. deg
+/LINAC/Beam/SetMaxSolidAngle      0.01 deg
+/LINAC/Beam/SetThetaRotationAngle 0. deg
+/LINAC/Beam/SetPhiRotationAngle   90. deg
 
 # Run
 #
