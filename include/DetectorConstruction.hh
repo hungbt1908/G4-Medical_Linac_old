@@ -16,6 +16,8 @@ class DetectorMessenger;
 class G4Box;
 class G4Cons;
 
+using namespace std;
+
 class DetectorConstruction : public G4VUserDetectorConstruction 
 {
 public:
@@ -28,7 +30,20 @@ public:
     void DefineMaterial();
     void DefineAttribute();
     G4VPhysicalVolume* ConstructVolume();
-    void ConstructTarget();
+    void ConstructTarget1();
+    void ConstructPrimaryCollimator1();
+    void ConstructTarget2();
+    void ConstructPrimaryCollimator2();
+    void ConstructVacuumWindow2();
+    void ConstrucIonizationChamber2();
+    void ConstructMirror2();
+    void ConstructJaw1X();
+    void ConstructJaw2X();
+    void ConstructJaw1Y();
+    void ConstructJaw2Y();
+    void ConstructAcc1();
+    void ConstructAcc2();    
+    void ConstructWaterPhantom();
     void PrintInformation();
  
 public:
@@ -40,6 +55,12 @@ public:
     G4Material* Air;
     G4Material* Copper;
     G4Material* Tungsten;
+    G4Material* Vacuum;
+    G4Material* Lead;
+    G4Material* Berylium;
+    G4Material* Kapton;
+    G4Material* Mylar;
+    G4Material* Water;
 
     // visualization
     G4VisAttributes* worldAtt;
@@ -51,6 +72,12 @@ public:
     G4Box* solidWorld;
     G4LogicalVolume* logicWorld;
     G4VPhysicalVolume* physWorld;
+
+    G4double isoCentre;
+    G4double jaw1XAperture;
+    G4double jaw2XAperture;
+    G4double jaw1YAperture;
+    G4double jaw2YAperture;
 
     DetectorMessenger* pDetectorMessenger;
 };
