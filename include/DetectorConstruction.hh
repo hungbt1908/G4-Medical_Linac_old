@@ -44,6 +44,9 @@ public:
     void ConstructAcc1();
     void ConstructAcc2();    
     void ConstructWaterPhantom();
+    void ConstructPhaseSpacePlane();
+    void ConstructBasePlate();
+    void ConstructMylar();
     void PrintInformation();
 
     inline void SetJaw1XAperture(G4double val){jaw1XAperture = val;}
@@ -76,6 +79,7 @@ public:
     G4Material* Kapton;
     G4Material* Mylar;
     G4Material* Water;
+    G4Material* Steel;
 
     // visualization
     G4VisAttributes* worldAtt;

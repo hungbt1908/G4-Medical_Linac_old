@@ -87,6 +87,15 @@ void DetectorConstruction::DefineMaterial()
 	//
 	Water = nist->FindOrBuildMaterial("G4_WATER");
 
+	//
+	G4Element* elW = nist->FindOrBuildElement("W");
+	G4Element* elNi = nist->FindOrBuildElement("Ni");
+	G4Element* elFe = nist->FindOrBuildElement("Fe");
+	Steel = new G4Material("Steel", 18*g/cm3, 3);
+	Steel->AddElement(elW, 95*perCent);
+	Steel->AddElement(elNi, 3.75*perCent);
+	Steel->AddElement(elFe, 1.25*perCent);
+
 	// Print materials
 	G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 }
@@ -127,6 +136,9 @@ void DetectorConstruction::ConstructAcc2()
 	ConstructJaw2X();
 	ConstructJaw1Y();
 	ConstructJaw2Y();
+	ConstructBasePlate();
+	ConstructMylar();
+	ConstructPhaseSpacePlane();
 }
 
 void DetectorConstruction::ConstructTarget1()
@@ -422,6 +434,29 @@ void DetectorConstruction::ConstructJaw2Y()
 	centre.set(x, -(z*sin(theta)+dy*cos(theta)), z*cos(theta)-dy*sin(theta));
 	cRotation->rotateX(-theta);
 	new G4PVPlacement(cRotation, centre, name+"PV", logVol, physWorld, false, 0);
+}
+
+void DetectorConstruction::ConstructBasePlate()
+{
+	G4Tubs* solidPlate = new G4Tubs("solidPlate", 115.57*mm, 302.26*mm, 15.24/2*mm, 0., 360*deg);
+	G4LogicalVolume* logicPlate = new G4LogicalVolume(solidPlate, Steel, "logicPlate");
+  	// G4VPhysicalVolume* physPlate =
+	new G4PVPlacement(0, G4ThreeVector(0, 0, 459.38*mm), logicPlate, "physPlate", logicWorld, false, 0, checkOverlap);
+}
+
+void DetectorConstruction::ConstructPhaseSpacePlane()
+{
+	G4Box* solidPSP = new G4Box("solidPSP", 15.*cm, 15.*cm, 0.01*cm);
+	G4LogicalVolume* logicPSF = new G4LogicalVolume(solidPSP, Air, "logicPSF");
+	new G4PVPlacement(0, G4ThreeVector(0., 0., 26.7*cm), logicPSF, "physPSF", logicWorld, false, 0, false);	
+}
+
+void DetectorConstruction::ConstructMylar()
+{
+	G4Box* solidMylar =  new G4Box("solidMylar", 50./2*cm, 50./2*cm, 0.1016/2*mm);
+	G4LogicalVolume* logicMylar = new G4LogicalVolume(solidMylar, Air, "logicMylar");
+	// G4VPhysicalVolume* physMylar =
+	new G4PVPlacement(0, G4ThreeVector(0, 0, 557*mm), logicMylar, "physMylar", logicWorld, false, 0, checkOverlap);
 }
 
 void DetectorConstruction::ConstructWaterPhantom()
