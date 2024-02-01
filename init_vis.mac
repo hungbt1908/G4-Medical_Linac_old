@@ -1,10 +1,15 @@
 # Setups geometry
-/LINAC/Geometry/SetPhantomXDim 30. cm
-/LINAC/Geometry/SetPhantomYDim 30. cm
-/LINAC/Geometry/SetPhantomZDim 30. cm
-/LINAC/Geometry/SetNumberOfVoxelsAlongX 30
-/LINAC/Geometry/SetNumberOfVoxelsAlongY 30
-/LINAC/Geometry/SetNumberOfVoxelsAlongZ 30
+/LINAC/Geometry/SetJaw1XAperture       -5. cm
+/LINAC/Geometry/SetJaw2XAperture        5. cm
+/LINAC/Geometry/SetJaw1YAperture       -5. cm
+/LINAC/Geometry/SetJaw2YAperture        5. cm
+/LINAC/Geometry/SetIsocenter            100. cm
+/LINAC/Geometry/SetPhantomXDim          30. cm
+/LINAC/Geometry/SetPhantomYDim          30. cm
+/LINAC/Geometry/SetPhantomZDim          30. cm
+/LINAC/Geometry/SetNumberOfVoxelsAlongX 10
+/LINAC/Geometry/SetNumberOfVoxelsAlongY 10
+/LINAC/Geometry/SetNumberOfVoxelsAlongZ 10
 
 # Initialize kernel
 #

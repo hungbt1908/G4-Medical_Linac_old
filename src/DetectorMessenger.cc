@@ -16,6 +16,41 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* pDetectorConstruction
     linacDir = new G4UIdirectory("/LINAC/Geometry/");
     linacDir -> SetGuidance("Command to change LGK setups");
 
+    //    
+    setJaw1XApertureCmd = new G4UIcmdWithADoubleAndUnit("/LINAC/Geometry/SetJaw1XAperture", this);
+    setJaw1XApertureCmd->SetGuidance("Set Jaw 1X aperture.");
+    setJaw1XApertureCmd->SetParameterName("jaw1XAperture", false);
+    setJaw1XApertureCmd->SetUnitCategory("Length");
+	setJaw1XApertureCmd->AvailableForStates(G4State_PreInit, G4State_Idle);
+
+    //    
+    SetJaw2XApertureCmd = new G4UIcmdWithADoubleAndUnit("/LINAC/Geometry/SetJaw2XAperture", this);
+    SetJaw2XApertureCmd->SetGuidance("Set Jaw 2X aperture.");
+    SetJaw2XApertureCmd->SetParameterName("jaw2XAperture", false);
+    SetJaw2XApertureCmd->SetUnitCategory("Length");
+	SetJaw2XApertureCmd->AvailableForStates(G4State_PreInit, G4State_Idle);
+
+    //    
+    SetJaw1YApertureCmd = new G4UIcmdWithADoubleAndUnit("/LINAC/Geometry/SetJaw1YAperture", this);
+    SetJaw1YApertureCmd->SetGuidance("Set Jaw 1Y aperture.");
+    SetJaw1YApertureCmd->SetParameterName("jaw1YAperture", false);
+    SetJaw1YApertureCmd->SetUnitCategory("Length");
+	SetJaw1YApertureCmd->AvailableForStates(G4State_PreInit, G4State_Idle);
+
+    //    
+    SetJaw2YApertureCmd = new G4UIcmdWithADoubleAndUnit("/LINAC/Geometry/SetJaw2YAperture", this);
+    SetJaw2YApertureCmd->SetGuidance("Set Jaw 2Y aperture.");
+    SetJaw2YApertureCmd->SetParameterName("jaw2YAperture", false);
+    SetJaw2YApertureCmd->SetUnitCategory("Length");
+	SetJaw2YApertureCmd->AvailableForStates(G4State_PreInit, G4State_Idle);
+
+    //   
+    SetIsocenterCmd = new G4UIcmdWithADoubleAndUnit("/LINAC/Geometry/SetIsocenter", this);
+    SetIsocenterCmd->SetGuidance("Set isocenter distance.");
+    SetIsocenterCmd->SetParameterName("isocenter", false);
+    SetIsocenterCmd->SetUnitCategory("Length");
+	SetIsocenterCmd->AvailableForStates(G4State_PreInit, G4State_Idle);
+
     //
     setPhantomXDimCmd = new G4UIcmdWithADoubleAndUnit("/LINAC/Geometry/SetPhantomXDim", this);
     setPhantomXDimCmd->SetGuidance("Set phantom dimension along X axis.");
@@ -59,6 +94,11 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* pDetectorConstruction
 DetectorMessenger::~DetectorMessenger()
 {
     delete linacDir;
+    delete setJaw1XApertureCmd;
+    delete SetJaw2XApertureCmd;
+    delete SetJaw1YApertureCmd;
+    delete SetJaw2YApertureCmd;
+    delete SetIsocenterCmd;
     delete setPhantomXDimCmd;
     delete setPhantomYDimCmd;
     delete setPhantomZDimCmd;
@@ -68,7 +108,32 @@ DetectorMessenger::~DetectorMessenger()
 }
 
 void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
-{       
+{  
+    if(command == setJaw1XApertureCmd)
+    {
+       fDetectorConstruction->SetJaw1XAperture(setJaw1XApertureCmd->GetNewDoubleValue(newValue));
+    }
+
+    if(command == SetJaw2XApertureCmd)
+    {
+       fDetectorConstruction->SetJaw2XAperture(SetJaw2XApertureCmd->GetNewDoubleValue(newValue));
+    }
+
+    if(command == SetJaw1YApertureCmd)
+    {
+       fDetectorConstruction->SetJaw1YAperture(SetJaw1YApertureCmd->GetNewDoubleValue(newValue));
+    }
+
+    if(command == SetJaw2YApertureCmd)
+    {
+       fDetectorConstruction->SetJaw2YAperture(SetJaw2YApertureCmd->GetNewDoubleValue(newValue));
+    }
+
+    if(command == SetIsocenterCmd)
+    {
+       fDetectorConstruction->SetIsocenter(SetIsocenterCmd->GetNewDoubleValue(newValue));
+    }
+
     if(command == setPhantomXDimCmd)
     {
        fDetectorConstruction->SetPhantomXDim(setPhantomXDimCmd->GetNewDoubleValue(newValue));

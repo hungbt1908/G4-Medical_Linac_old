@@ -25,11 +25,11 @@ DetectorConstruction::DetectorConstruction()
   : G4VUserDetectorConstruction()
 {
   	pDetectorMessenger = new DetectorMessenger(this); 
-	isoCentre = 100*cm;
-	jaw1XAperture = -10.*cm;
-	jaw2XAperture = 10.*cm;
-	jaw1YAperture = -10.*cm;
-	jaw2YAperture = 10.*cm;
+	// isoCentre = 100*cm;
+	// jaw1XAperture = -10.*cm;
+	// jaw2XAperture = 10.*cm;
+	// jaw1YAperture = -10.*cm;
+	// jaw2YAperture = 10.*cm;
 }
 
 DetectorConstruction::~DetectorConstruction()

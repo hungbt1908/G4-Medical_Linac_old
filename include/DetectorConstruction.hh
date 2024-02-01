@@ -46,6 +46,13 @@ public:
     void ConstructWaterPhantom();
     void PrintInformation();
 
+    inline void SetJaw1XAperture(G4double val){jaw1XAperture = val;}
+    inline void SetJaw2XAperture(G4double val){jaw2XAperture = val;}
+    inline void SetJaw1YAperture(G4double val){jaw1YAperture = val;}
+    inline void SetJaw2YAperture(G4double val){jaw2YAperture = val;}
+
+    inline void SetIsocenter(G4double val){isoCentre = val;}
+
     inline void SetPhantomXDim(G4double val){phantomXDim = val;}
     inline void SetPhantomYDim(G4double val){phantomYDim = val;}
     inline void SetPhantomZDim(G4double val){phantomZDim = val;}

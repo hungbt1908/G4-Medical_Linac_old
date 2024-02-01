@@ -25,6 +25,11 @@ private:
     DetectorConstruction* fDetectorConstruction;
 
     G4UIdirectory* linacDir;
+    G4UIcmdWithADoubleAndUnit* setJaw1XApertureCmd;
+    G4UIcmdWithADoubleAndUnit* SetJaw2XApertureCmd;
+    G4UIcmdWithADoubleAndUnit* SetJaw1YApertureCmd;
+    G4UIcmdWithADoubleAndUnit* SetJaw2YApertureCmd;
+    G4UIcmdWithADoubleAndUnit* SetIsocenterCmd;
     G4UIcmdWithADoubleAndUnit* setPhantomXDimCmd;
     G4UIcmdWithADoubleAndUnit* setPhantomYDimCmd;
     G4UIcmdWithADoubleAndUnit* setPhantomZDimCmd;
