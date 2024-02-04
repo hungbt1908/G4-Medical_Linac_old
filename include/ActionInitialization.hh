@@ -2,17 +2,23 @@
 #define ActionInitialization_h 1
 
 #include "G4VUserActionInitialization.hh"
-#include "globals.hh"
+#include "PrimaryGeneratorAction.hh"
+
+class DetectorConstruction;
 
 class ActionInitialization : public G4VUserActionInitialization
 {
 public:
-    ActionInitialization();
-    ~ActionInitialization() override = default;
+	ActionInitialization(DetectorConstruction* detConstruction);
+	virtual ~ActionInitialization();
 
-    void BuildForMaster() const override;
-    void Build() const override;
+	virtual void BuildForMaster() const;
+    virtual void Build() const;
+
+	private:
+		DetectorConstruction *fDetConstruction = nullptr;
 };
+
 #endif
 
-
+    

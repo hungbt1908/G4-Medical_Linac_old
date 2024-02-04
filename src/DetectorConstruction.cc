@@ -21,6 +21,10 @@
 #include "G4SystemOfUnits.hh"
 #include "G4VisAttributes.hh"
 
+#include "G4SDManager.hh"
+#include "G4MultiFunctionalDetector.hh"
+#include "G4PSEnergyDeposit3D.hh"
+
 DetectorConstruction::DetectorConstruction()
   : G4VUserDetectorConstruction()
 {
@@ -512,5 +516,22 @@ void DetectorConstruction::PrintInformation()
 
 void DetectorConstruction::ConstructSDandField()
 {
+	//  Sensitive Detector Manager.
+	G4SDManager* pSDman = G4SDManager::GetSDMpointer();
 
+	// Sensitive Detector Name
+	G4String phantomSDname = "PhantomSD";
+
+	// Define MultiFunctionalDetector with name.
+  	G4MultiFunctionalDetector* mFDet = new G4MultiFunctionalDetector(phantomSDname);
+  	pSDman->AddNewDetector(mFDet);                 // Register SD to SDManager.
+  	RODetectorZDivisionLog->SetSensitiveDetector(mFDet);    // Assign SD to the logical volume.
+
+	//-- Primitive Scorer for Energy Deposit.
+	G4String psName;
+	G4PSEnergyDeposit3D* scorer0 = new G4PSEnergyDeposit3D(psName = "totalEDep",
+                                                          numberOfVoxelsAlongX,
+														  numberOfVoxelsAlongY,
+														  numberOfVoxelsAlongZ);
+	mFDet->RegisterPrimitive(scorer0);
 }

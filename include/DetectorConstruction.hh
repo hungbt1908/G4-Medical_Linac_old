@@ -63,7 +63,17 @@ public:
     inline void SetNumberOfVoxelsAlongX(G4double val){numberOfVoxelsAlongX = val;}
     inline void SetNumberOfVoxelsAlongY(G4double val){numberOfVoxelsAlongY = val;}
     inline void SetNumberOfVoxelsAlongZ(G4double val){numberOfVoxelsAlongZ = val;}
- 
+
+	void GetNumberOfSegmentsInPhantom(G4int& nx, G4int& ny, G4int& nz) 
+    const{nx = numberOfVoxelsAlongX; ny = numberOfVoxelsAlongY; nz = numberOfVoxelsAlongZ;}
+
+	void GetNumberOfPhantomDimension(G4double& dx, G4double& dy, G4double& dz)
+	const{dx = phantomXDim; dy = phantomYDim; dz = phantomZDim;}
+
+	G4VPhysicalVolume* GetVoxelPhysicalVolume()
+	{
+		return RODetectorZDivisionPhys;
+	}    
 public:
     // attributes
 
