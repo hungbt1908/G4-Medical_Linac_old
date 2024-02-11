@@ -13,6 +13,8 @@
 #include "G4VModularPhysicsList.hh"
 #include "ActionInitialization.hh"
 
+#include "G4ScoringManager.hh"
+
 int main(int argc, char** argv)
 {	
 	// Choose the Random engine
@@ -23,6 +25,8 @@ int main(int argc, char** argv)
 	G4MTRunManager* runManager = new G4MTRunManager;
 	G4int nThreads = G4Threading::G4GetNumberOfCores();
 	runManager->SetNumberOfThreads(nThreads-1);
+
+	G4ScoringManager::GetScoringManager(); // This enables scoring
 
 	auto detConstruction = new DetectorConstruction();
 	runManager->SetUserInitialization(detConstruction);

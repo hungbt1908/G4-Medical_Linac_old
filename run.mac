@@ -1,3 +1,22 @@
+# Setups geometry
+/LINAC/Geometry/SetJaw1XAperture       -5. cm
+/LINAC/Geometry/SetJaw2XAperture        5. cm
+/LINAC/Geometry/SetJaw1YAperture       -5. cm
+/LINAC/Geometry/SetJaw2YAperture        5. cm
+/LINAC/Geometry/SetIsocenter            100. cm
+/LINAC/Geometry/SetPhantomXDim          30. cm
+/LINAC/Geometry/SetPhantomYDim          30. cm
+/LINAC/Geometry/SetPhantomZDim          30. cm
+
+# Setups scoring mesh
+/score/create/boxMesh boxMesh1
+/score/mesh/boxSize 15 15 15 cm
+/score/mesh/nBin 300 300 300
+/score/mesh/translate/xyz 0. 0. 115. cm
+/score/quantity/doseDeposit dose
+/score/close
+#/score/list
+
 # Initialize kernel
 #
 /run/geometryModified
@@ -18,5 +37,6 @@
 
 # Run
 #
-/run/printProgress 100000000
-/run/beamOn 2000000000
+#/run/printProgress 100000000
+/run/beamOn 1000
+/score/dumpQuantityToFile boxMesh1 dose Dose.txt

@@ -479,59 +479,10 @@ void DetectorConstruction::ConstructWaterPhantom()
 	G4Box *fullWaterPhantomBox = new G4Box("fullWaterPhantomBox", halfSize.getX(), halfSize.getY(), halfSize.getZ());
  	G4LogicalVolume *fullWaterPhantomLV = new G4LogicalVolume(fullWaterPhantomBox, Water, "fullWaterPhantomLV", 0, 0, 0);
 	G4VPhysicalVolume* physWaterPhantom = new G4PVPlacement(0, centre, "fullWaterPhantomPV", fullWaterPhantomLV, physWorld, false, 0);
-
-	// Division along X axis
-	G4double halfXVoxelSizeX = fPhantomSize.getX()/2./numberOfVoxelsAlongX;
-	G4double halfXVoxelSizeY = fPhantomSize.getY()/2.;
-	G4double halfXVoxelSizeZ = fPhantomSize.getZ()/2.;
-	G4double voxelXThickness = 2*halfXVoxelSizeX;
-
-	RODetectorXDivision = new G4Box("RODetectorXDivision", halfXVoxelSizeX, halfXVoxelSizeY, halfXVoxelSizeZ);
-	RODetectorXDivisionLog = new G4LogicalVolume(RODetectorXDivision, Water, "RODetectorXDivisionLog", 0,0,0);
-	RODetectorXDivisionPhys = new G4PVReplica("RODetectorXDivisionPhys", RODetectorXDivisionLog, physWaterPhantom, kXAxis, numberOfVoxelsAlongX, voxelXThickness);
-
-	// Division along Y axis
-	G4double halfYVoxelSizeX = halfXVoxelSizeX;
-  	G4double halfYVoxelSizeY = fPhantomSize.getY()/2./numberOfVoxelsAlongY;
-  	G4double halfYVoxelSizeZ = fPhantomSize.getZ()/2.;
-  	G4double voxelYThickness = 2*halfYVoxelSizeY;
-
-	RODetectorYDivision = new G4Box("RODetectorYDivision", halfYVoxelSizeX, halfYVoxelSizeY, halfYVoxelSizeZ);
-  	RODetectorYDivisionLog = new G4LogicalVolume(RODetectorYDivision, Water, "RODetectorYDivisionLog", 0,0,0);
-  	RODetectorYDivisionPhys = new G4PVReplica("RODetectorYDivisionPhys", RODetectorYDivisionLog, RODetectorXDivisionPhys, kYAxis, numberOfVoxelsAlongY, voxelYThickness);
-
-	// Division along Z axis
-	G4double halfZVoxelSizeX = halfXVoxelSizeX;
-  	G4double halfZVoxelSizeY = halfYVoxelSizeY;
-  	G4double halfZVoxelSizeZ = fPhantomSize.getZ()/2./numberOfVoxelsAlongZ;
-  	G4double voxelZThickness = 2*halfZVoxelSizeZ;
-
-	RODetectorZDivision = new G4Box("RODetectorZDivision",  halfZVoxelSizeX, halfZVoxelSizeY, halfZVoxelSizeZ);
-  	RODetectorZDivisionLog = new G4LogicalVolume(RODetectorZDivision, Water, "RODetectorZDivisionLog", 0,0,0);
-  	RODetectorZDivisionPhys = new G4PVReplica("RODetectorZDivisionPhys", RODetectorZDivisionLog, RODetectorYDivisionPhys, kZAxis, numberOfVoxelsAlongZ, voxelZThickness);
 }
 
 void DetectorConstruction::PrintInformation()
 {}
 
 void DetectorConstruction::ConstructSDandField()
-{
-	//  Sensitive Detector Manager.
-	G4SDManager* pSDman = G4SDManager::GetSDMpointer();
-
-	// Sensitive Detector Name
-	G4String phantomSDname = "PhantomSD";
-
-	// Define MultiFunctionalDetector with name.
-  	G4MultiFunctionalDetector* mFDet = new G4MultiFunctionalDetector(phantomSDname);
-  	pSDman->AddNewDetector(mFDet);                 // Register SD to SDManager.
-  	RODetectorZDivisionLog->SetSensitiveDetector(mFDet);    // Assign SD to the logical volume.
-
-	//-- Primitive Scorer for Energy Deposit.
-	G4String psName;
-	G4PSEnergyDeposit3D* scorer0 = new G4PSEnergyDeposit3D(psName = "totalEDep",
-                                                          numberOfVoxelsAlongX,
-														  numberOfVoxelsAlongY,
-														  numberOfVoxelsAlongZ);
-	mFDet->RegisterPrimitive(scorer0);
-}
+{}

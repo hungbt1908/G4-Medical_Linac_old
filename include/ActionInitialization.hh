@@ -4,19 +4,14 @@
 #include "G4VUserActionInitialization.hh"
 #include "PrimaryGeneratorAction.hh"
 
-class DetectorConstruction;
-
 class ActionInitialization : public G4VUserActionInitialization
 {
 public:
-	ActionInitialization(DetectorConstruction* detConstruction);
+	ActionInitialization();
 	virtual ~ActionInitialization();
 
 	virtual void BuildForMaster() const;
     virtual void Build() const;
-
-	private:
-		DetectorConstruction *fDetConstruction = nullptr;
 };
 
 #endif
