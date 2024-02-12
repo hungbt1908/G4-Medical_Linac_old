@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 	//construct the default run manager
 	G4MTRunManager* runManager = new G4MTRunManager;
 	G4int nThreads = G4Threading::G4GetNumberOfCores();
-	runManager->SetNumberOfThreads(nThreads-1);
+	runManager->SetNumberOfThreads(1);
 
 	G4ScoringManager::GetScoringManager(); // This enables scoring
 

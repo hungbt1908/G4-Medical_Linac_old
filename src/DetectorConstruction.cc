@@ -131,11 +131,11 @@ void DetectorConstruction::ConstructAcc1()
 
 void DetectorConstruction::ConstructAcc2()
 {
-	ConstructTarget2();
-	ConstructPrimaryCollimator2();	
-	ConstructVacuumWindow2();
-	ConstrucIonizationChamber2();
-	ConstructMirror2();
+	// ConstructTarget2();
+	// ConstructPrimaryCollimator2();	
+	// ConstructVacuumWindow2();
+	// ConstrucIonizationChamber2();
+	// ConstructMirror2();
 	ConstructJaw1X();
 	ConstructJaw2X();
 	ConstructJaw1Y();
