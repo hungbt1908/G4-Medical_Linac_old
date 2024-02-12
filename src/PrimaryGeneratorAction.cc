@@ -13,7 +13,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 	particleGun = new G4ParticleGun();
 	particleGun->SetNumberOfParticles(1000);
 
-	G4String fileName = "Truebeam6XS";
+	G4String fileName = "TrueBeam6FFF";
     theIAEAReader = new G4IAEAphspReader(fileName);
     // phase-space plane shift
     // G4ThreeVector psfShift(0., 0.,-50*cm);//lespace de phase est 

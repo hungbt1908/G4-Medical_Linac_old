@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 	auto physicsList = new PhysicsList();
 	runManager->SetUserInitialization(physicsList);
 
-	auto actionInitialization = new ActionInitialization();
+	auto actionInitialization = new ActionInitialization(detConstruction);
 	runManager->SetUserInitialization(actionInitialization);
 	//runManager->Initialize();
 		
