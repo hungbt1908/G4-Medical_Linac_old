@@ -12,7 +12,9 @@
 
 #include "G4ParticleDefinition.hh"
 
+
 class PrimaryGeneratorActionMessenger;
+class G4IAEAphspReader;
 
 class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
@@ -47,6 +49,7 @@ private:
 
 	PrimaryGeneratorActionMessenger* fPrimaryGeneratorActionMessenger;
 	G4ParticleGun* particleGun = nullptr;
+	G4IAEAphspReader* theIAEAReader;
 	
 };
 

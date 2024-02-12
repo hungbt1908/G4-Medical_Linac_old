@@ -10,12 +10,12 @@ ActionInitialization::ActionInitialization(DetectorConstruction *detConstruction
 ActionInitialization::~ActionInitialization()
 {}
 
-void ActionInitialization::BuildForMaster() const
-{
-	G4UserRunAction* run_action = new RunAction(fDetConstruction);
-  	SetUserAction(run_action);
+// void ActionInitialization::BuildForMaster() const
+// {
+// 	G4UserRunAction* run_action = new RunAction(fDetConstruction);
+//   	SetUserAction(run_action);
 
-}
+// }
 
 void ActionInitialization::Build() const
 {

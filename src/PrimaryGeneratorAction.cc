@@ -2,6 +2,8 @@
 #include "PrimaryGeneratorActionMessenger.hh"
 
 #include "G4ParticleDefinition.hh"
+#include "Randomize.hh"
+#include "G4IAEAphspReader.hh"
 
 using namespace CLHEP;
 
@@ -10,11 +12,19 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 	fPrimaryGeneratorActionMessenger = new PrimaryGeneratorActionMessenger(this);
 	particleGun = new G4ParticleGun();
 	particleGun->SetNumberOfParticles(1000);
+
+	G4String fileName = "Truebeam6XS";
+    theIAEAReader = new G4IAEAphspReader(fileName);
+    // phase-space plane shift
+    // G4ThreeVector psfShift(0., 0.,-50*cm);//lespace de phase est 
+    // theIAEAReader->SetGlobalPhspTranslation(psfShift);
+    // theIAEAReader->SetTimesRecycled(0);
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
-	delete particleGun;
+	if(particleGun) delete particleGun;
+	if(theIAEAReader) delete theIAEAReader;
 }
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
@@ -53,5 +63,6 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 	particleGun->SetParticleMomentumDirection(dir);
 
 	//
-	particleGun->GeneratePrimaryVertex(anEvent);
+	//particleGun->GeneratePrimaryVertex(anEvent);
+	theIAEAReader->GeneratePrimaryVertex(anEvent);
 }

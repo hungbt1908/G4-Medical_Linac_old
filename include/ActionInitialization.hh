@@ -12,7 +12,7 @@ public:
 	ActionInitialization(DetectorConstruction* detConstruction);
 	virtual ~ActionInitialization();
 
-	virtual void BuildForMaster() const;
+	// virtual void BuildForMaster() const;
     virtual void Build() const;
 
 	private:
